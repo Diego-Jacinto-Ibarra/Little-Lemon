@@ -10,4 +10,7 @@ urlpatterns = [
     path('menu/', views.menu, name="menu"),
     path('menu_item/<int:pk>/', views.display_menu_item, name="menu_item"),
     path('bookings', views.bookings, name='bookings'),
+    path('user/', views.user, name='user'),
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
 ]
