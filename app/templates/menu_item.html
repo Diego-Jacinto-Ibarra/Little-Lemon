@@ -14,7 +14,7 @@
             <!--Begin col-->
             <div class="column">
                 <h2>
-                    {{ menu_item.name }} - <i class="fa fa-star small_star"></i>
+                    {{ menu_item.name }} - ({{average_rating}} <i class="fa fa-star small_star"></i>)
                 </h2>
                 <p>
                     {{ menu_item.menu_item_description }}
@@ -22,25 +22,34 @@
                 <p>
                     Price: ${{ menu_item.price }}.00
                 </p>
+                <p>Rate this dish:</p>
                 <form id="ratingForm" class="row">
+                    {% csrf_token %}
                     <label>
-                        <input type="radio" name="star" value="1"><i class="fa fa-star fa-3x"></i>
+                        <input type="radio" name="star" value="1"><i class="fa fa-star fa-3x unselected"></i>
                     </label>
                     <label>
-                        <input type="radio" name="star" value="2"><i class="fa fa-star fa-3x"></i>
+                        <input type="radio" name="star" value="2"><i class="fa fa-star fa-3x unselected"></i>
                     </label>
                     <label>
-                        <input type="radio" name="star" value="3"><i class="fa fa-star fa-3x"></i>
+                        <input type="radio" name="star" value="3"><i class="fa fa-star fa-3x unselected"></i>
                     </label>
                     <label>
-                        <input type="radio" name="star" value="4"><i class="fa fa-star fa-3x"></i>
+                        <input type="radio" name="star" value="4"><i class="fa fa-star fa-3x unselected"></i>
                     </label>
                     <label>
-                        <input type="radio" name="star" value="5"><i class="fa fa-star fa-3x"></i>
+                        <input type="radio" name="star" value="5"><i class="fa fa-star fa-3x unselected"></i>
                     </label>
-
-                    <button type="button" id="submitRating">Submit</button>
+                    
                 </form>
+                <button type="button" id="button">Submit</button>
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                        {% endfor %}
+                </ul>
+                {% endif %}
             </div>
             <!--End col-->
             <!--Begin col-->
@@ -55,45 +64,49 @@
 
 <script>
     const stars = document.querySelectorAll("label i");
-let selectedRating = 0;
+    let selectedRating = 0;
 
-stars.forEach((star, index) => {
-    star.addEventListener("click", () => {
-        const radio = star.previousElementSibling;
-        radio.checked = true;
-        selectedRating = radio.value;
+    stars.forEach((star, index) => {
+        star.addEventListener("click", () => {
+            const radio = star.previousElementSibling;
+            radio.checked = true;
+            selectedRating = radio.value;
 
-        // Remove selected class from all stars
-        stars.forEach((s) => s.classList.remove("selected"));
-        stars.forEach((s) => s.classList.add("unselected"));
+            // Remove selected class from all stars
+            stars.forEach((s) => s.classList.remove("selected"));
+            stars.forEach((s) => s.classList.add("unselected"));
 
-        // Add selected class to clicked star and all previous stars
-        for (let i = 0; i <= index; i++) {
-            stars[i].classList.add("selected");
-            stars[i].classList.remove("unselected");
-        }
+            // Add selected class to clicked star and all previous stars
+            for (let i = 0; i <= index; i++) {
+                stars[i].classList.add("selected");
+                stars[i].classList.remove("unselected");
+            }
 
-        console.log(`Star ${index + 1} selected`);
-        console.log(`Rating: ${selectedRating}`);
+            console.log(`Star ${index + 1} selected`);
+            console.log(`Rating: ${selectedRating}`);
+        });
     });
-});
 
-document.getElementById("submitRating").addEventListener("click", () => {
-    if (selectedRating > 0) {
-        fetch("/test", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ rating: selectedRating }),
+    document.getElementById("button").addEventListener("click", () => {
+        if (selectedRating > 0) {
+            const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+            fetch("/rating", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": csrftoken,
+                },
+                body: JSON.stringify({ rating: selectedRating, menu_id: {{ menu_item.id }} }),
         })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log("Success:", data);
+            .then((response) => {
+                if (response.ok) {
+                    location.reload();
+                }
+                console.log(response);
             })
-            .catch((error) => {
-                console.error("Error:", error);
-            });
+        .catch((error) => {
+            console.error("Error:", error);
+        });
     } else {
         alert("Please select a rating");
     }

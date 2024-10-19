@@ -58,7 +58,7 @@ header img {
     align-items: center;
     padding: 1rem;
     background-color: #f8f8f8;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #444;
 }
 
 .nav-links {
@@ -74,13 +74,22 @@ header img {
 
 .nav-links a {
     text-decoration: none;
-    color: #333;
+    color: #000000;
     font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: #575757;
+    color: #fff;
 }
 
 .user-info {
     display: flex;
     align-items: center;
+    color: #000000;
 }
 
 .user-info p {
@@ -90,8 +99,16 @@ header img {
 
 .user-info a {
     text-decoration: none;
-    color: #333;
+    color: #000000;
     font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.user-info a:hover {
+    background-color: #575757;
+    color: #ffffff;
 }
 
 section {
@@ -311,4 +328,18 @@ input[type="radio"]:checked ~ i {
 
 .small_star {
     font-size: 2rem !important;
+}
+
+.submit-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.submit-button:hover {
+    background-color: #45a049;
 }
