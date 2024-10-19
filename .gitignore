@@ -9,8 +9,6 @@ __pycache__/
 
 *.log
 
-app/migrations/
-
 *.cache
 *.mo
 *.pot
