@@ -32,8 +32,20 @@ I developed this project to showcase my backend skills, including Python, Django
     ```
 
 4. Apply migrations:
+
     ```sh
     python manage.py migrate
+    ```
+
+5. Create a superuser:
+
+    ```sh
+    python manage.py createsuperuser
+    ```
+
+6. Run tests to make sure everything is working as expected(optional):
+    ```sh
+    python manage.py test
     ```
 
 ## Usage
