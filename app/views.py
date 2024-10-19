@@ -8,6 +8,9 @@ from datetime import datetime
 import json
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
+from django.contrib.auth.models import User
+from django.contrib import messages
+from django.contrib.auth import login, authenticate, logout
 
 
 # Create your views here.
@@ -74,3 +77,44 @@ def bookings(request):
     booking_json = serializers.serialize('json', bookings)
 
     return HttpResponse(booking_json, content_type='application/json')
+
+
+def user(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        if User.objects.filter(username=username).exists():
+            messages.error(request, 'User already exists')
+            return render(request, 'user.html')
+
+        user = User.objects.create_user(username=username, password=password)
+        user.save()
+
+        user = authenticate(username=username, password=password)
+        login(request, user)
+
+        messages.success(request, 'User created successfully')
+        return render(request, 'user.html')
+
+    return render(request, 'user.html')
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return render(request, 'index.html')
+        else:
+            messages.error(request, 'Invalid credentials')
+            return render(request, 'login.html')
+
+    return render(request, 'login.html')
+
+def logout_view(request):
+    logout(request)
+    return render(request, 'index.html')
