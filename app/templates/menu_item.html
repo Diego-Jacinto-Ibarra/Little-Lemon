@@ -13,9 +13,14 @@
         <div class="row">
             <!--Begin col-->
             <div class="column">
-                <h2>
-                    {{ menu_item.name }} - ({{average_rating}} <i class="fa fa-star small_star"></i>)
-                </h2>
+                <div class="menu-item">
+                    <h2 class="menu-item-title">{{ menu_item.name }} -</h2>
+                    <div class="menu-item-rating">
+                        <span class="average-rating">{{average_rating}}</span>
+                        <i class="fa fa-star small_star"></i>
+                        <span class="total-ratings">({{total_ratings}} ratings)</span>
+                    </div>
+                </div>
                 <p>
                     {{ menu_item.menu_item_description }}
                 </p>
@@ -40,7 +45,7 @@
                     <label>
                         <input type="radio" name="star" value="5"><i class="fa fa-star fa-3x unselected"></i>
                     </label>
-                    
+
                 </form>
                 <button type="button" id="button">Submit</button>
                 {% if messages %}
