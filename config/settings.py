@@ -77,12 +77,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_PASSWORD'),
-        'HOST': config('DB_HOST'),
-        'PORT': config('DB_PORT'),
+        'ENGINE': config('DB_ENGINE'),
+        'NAME': BASE_DIR / config('DB_NAME'),
+        # 'USER': config('DB_USER'),
+        # 'PASSWORD': config('DB_PASSWORD'),
+        # 'HOST': config('DB_HOST'),
+        # 'PORT': config('DB_PORT'),
     }
 }
 
@@ -121,7 +121,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
