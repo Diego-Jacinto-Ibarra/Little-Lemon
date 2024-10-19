@@ -50,38 +50,48 @@ header img {
     height: auto;
 }
 
-nav {
-    background-color: #495e57;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    margin-bottom: 0px;
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
 }
 
-nav ul {
+.nav-links {
+    display: flex;
     list-style: none;
-    font-size: 1.5rem;
-    text-align: center;
-    padding-inline-start: 0rem;
-    margin-bottom: 0px;
+    padding: 0;
+    margin: 0;
 }
 
-nav ul li {
-    display: inline-block;
-    margin: 0.5rem;
+.nav-links li {
+    margin-right: 1rem;
 }
 
-nav ul a {
-    color: #edefee;
+.nav-links a {
     text-decoration: none;
+    color: #333;
+    font-weight: bold;
 }
 
-nav ul a:active {
-    text-decoration: underline;
+.user-info {
+    display: flex;
+    align-items: center;
 }
 
-nav ul a:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 0.1rem;
+.user-info p {
+    margin: 0;
+    margin-right: 1rem;
+}
+
+.user-info a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
 }
 
 section {
@@ -138,6 +148,7 @@ select {
     display: block;
     color: #fff;
     line-height: 25px;
+    cursor: pointer;
 }
 
 #hero {
@@ -243,6 +254,21 @@ footer p {
     font-size: 1rem;
 }
 
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
+}
+
 @media (max-width: 800px) {
     section {
         flex-direction: column;
@@ -264,6 +290,7 @@ footer p {
 
 i {
     color: #ffd700;
+    cursor: pointer;
 }
 
 input[type="radio"] {
@@ -280,4 +307,8 @@ input[type="radio"]:checked ~ i {
 
 .unselected {
     color: #d3d3d3;
+}
+
+.small_star {
+    font-size: 2rem !important;
 }
