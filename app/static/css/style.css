@@ -1,15 +1,19 @@
 body {
-    font-family: 'Karla', sans-serif;
+    font-family: "Karla", sans-serif;
     margin-top: 3rem;
     margin-bottom: 3rem;
     margin-left: 5%;
     margin-right: 5%;
 }
 
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Markazi Text', serif;
-    letter-spacing: 2px;;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Markazi Text", serif;
+    letter-spacing: 2px;
 }
 
 h1 {
@@ -21,15 +25,16 @@ h1 {
 h2 {
     font-size: 2.5rem;
     color: #333333;
-    margin:1rem 0;
+    margin: 1rem 0;
 }
 
-p, ul{
-    font-size: 1.25rem;;
+p,
+ul {
+    font-size: 1.25rem;
 }
 
 a {
-    color: #EE9972;
+    color: #ee9972;
     text-decoration: none;
 }
 
@@ -45,9 +50,8 @@ header img {
     height: auto;
 }
 
-
 nav {
-    background-color: #495E57;
+    background-color: #495e57;
     margin-top: 1rem;
     margin-bottom: 1rem;
     margin-bottom: 0px;
@@ -67,7 +71,7 @@ nav ul li {
 }
 
 nav ul a {
-    color: #EDEFEE;
+    color: #edefee;
     text-decoration: none;
 }
 
@@ -89,7 +93,7 @@ section {
 }
 
 article {
-    flex:1;
+    flex: 1;
 }
 
 article img {
@@ -101,7 +105,7 @@ article ul {
 }
 
 main article {
-    border: 1px solid #EDEFEE;
+    border: 1px solid #edefee;
     padding-left: 1rem;
     padding-right: 1rem;
 }
@@ -113,69 +117,75 @@ figure {
 label {
     font-weight: bold;
     display: block;
-  }
+}
 
-input, select{
+input,
+select {
     width: 80%;
     display: block;
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     line-height: 1.5rem;
     box-sizing: border-box;
 }
 
 #button {
-    padding: .5rem 1rem;
-    border: 1px solid #495E57;
-    background-color:#495E57;;
+    padding: 0.5rem 1rem;
+    border: 1px solid #495e57;
+    background-color: #495e57;
     border-radius: 5px;
     width: 80%;
     font-size: 1.25rem;
     display: block;
     color: #fff;
     line-height: 25px;
-  }
+}
 
 #hero {
-    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url('../img/restaurant_inside.jpg');
+    background-image: linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.8)
+        ),
+        url("../img/restaurant_inside.jpg");
     background-size: cover;
     background-position: 75%;
     color: white;
     min-height: 200px;
-    text-align: center;;
+    text-align: center;
 }
 
 #hero p {
     font-size: 2rem;
-    margin:0;
+    margin: 0;
     text-shadow: 2px 2px 4px #333333;
 }
 
-.cta { 
-    display: inline-block; 
+.cta {
+    display: inline-block;
     color: rgba(255, 255, 255, 0.9);
-    width: 200px; 
-    font-weight: bold; 
+    width: 200px;
+    font-weight: bold;
     font-size: 1.5rem;
-    padding: 8px; 
-    border: 3px solid #fff; 
-    text-align: center; 
-    outline: none; 
-    text-decoration: none; 
+    padding: 8px;
+    border: 3px solid #fff;
+    text-align: center;
+    outline: none;
+    text-decoration: none;
     margin: 1rem;
-} 
+}
 
 .cta:hover {
-    color:#fff;
-    background:#495E57;
-    border: 3px solid #495E57; 
-  }
+    color: #fff;
+    background: #495e57;
+    border: 3px solid #495e57;
+}
 
-  .heading-shadow {
+.heading-shadow {
     text-shadow: 1px 1px 4px #333333;
-  }
+}
 
 footer {
-    background-color: #EDEFEE;
+    background-color: #edefee;
     padding: 1rem;
     display: flex;
     gap: 2rem 1rem;
@@ -193,7 +203,7 @@ footer p {
     border-left: none;
     border-right: none;
     text-align: right;
-    padding-top: 1rem;;
+    padding-top: 1rem;
 }
 
 .row {
@@ -201,55 +211,73 @@ footer p {
     flex-direction: row;
     width: 100%;
     padding-bottom: 1rem;
-  }
+}
 
-  .column {
+.column {
     flex-basis: 50%;
     margin-bottom: 1rem;
     padding-bottom: 1rem;
-  }
+}
 
-  .column figure {
+.column figure {
     padding: 0px 12px;
+}
 
-  }
-
-
-  .videowrap {
-	position: relative;
-	padding-bottom: 56.25%; /* 16:9 */
-	padding-top: 1rem;
-	height: 0;
+.videowrap {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 1rem;
+    height: 0;
 }
 .videowrap iframe {
-	position: absolute;
+    position: absolute;
     margin-top: 2rem;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
-.menu-price{
+.menu-price {
     display: block;
     font-size: 1rem;
 }
 
 @media (max-width: 800px) {
     section {
-        flex-direction: column;   
+        flex-direction: column;
     }
 
     .row {
         flex-direction: column;
         width: 100%;
-      }
-   
-    input{
+    }
+
+    input {
         width: 100%;
     }
 
-    #button{
+    #button {
         width: 100%;
     }
-  }
+}
+
+i {
+    color: #ffd700;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"]:checked ~ i {
+    color: #ffd700;
+}
+
+.selected {
+    color: #ffd700;
+}
+
+.unselected {
+    color: #d3d3d3;
+}
