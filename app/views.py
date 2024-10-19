@@ -51,9 +51,10 @@ def display_menu_item(request, pk=None):
     if pk:
         menu_item = Menu.objects.get(pk=pk)
         average_rating = round(menu_item.average_rating(), 1)
+        total_ratings = menu_item.rating_count()
     else:
         menu_item = ""
-    return render(request, 'menu_item.html', {"menu_item": menu_item, "average_rating": average_rating})
+    return render(request, 'menu_item.html', {"menu_item": menu_item, "average_rating": average_rating, "total_ratings": total_ratings})
 
 
 @csrf_exempt
