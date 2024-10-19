@@ -1,13 +1,13 @@
 # from django.http import HttpResponse
 from django.shortcuts import render
 from .forms import BookingForm
-from .models import Menu
+from .models import Menu, Rating
 from django.core import serializers
 from .models import Booking
 from datetime import datetime
 import json
 from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
@@ -50,9 +50,10 @@ def menu(request):
 def display_menu_item(request, pk=None):
     if pk:
         menu_item = Menu.objects.get(pk=pk)
+        average_rating = round(menu_item.average_rating(), 1)
     else:
         menu_item = ""
-    return render(request, 'menu_item.html', {"menu_item": menu_item})
+    return render(request, 'menu_item.html', {"menu_item": menu_item, "average_rating": average_rating})
 
 
 @csrf_exempt
@@ -77,6 +78,19 @@ def bookings(request):
     booking_json = serializers.serialize('json', bookings)
 
     return HttpResponse(booking_json, content_type='application/json')
+
+def rating(request):
+    if request.method == 'POST':
+        data = json.load(request)
+        menu = Menu.objects.get(pk=data['menu_id'])
+        rating = Rating(
+            rating=data['rating'],
+            menu=menu
+        )
+        rating.save()
+
+    referer_url = request.META.get('HTTP_REFERER', '/')
+    return HttpResponseRedirect(referer_url)
 
 
 def user(request):
