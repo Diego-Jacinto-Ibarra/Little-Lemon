@@ -3,15 +3,14 @@
     <img src="{% static 'img/logo.png' %}" />
 </header>
 <nav class="navbar">
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <label for="menu-toggle" class="menu-label">Menu</label>
     <ul class="nav-links">
         <li><a href="{% url 'home' %}">Home</a></li>
         <li><a href="{% url 'about' %}">About</a></li>
         <li><a href="{% url 'menu' %}">Menu</a></li>
         <li><a href="{% url 'book' %}">Book</a></li>
         <li><a href="{% url 'reservations' %}">Reservations</a></li>
-        {% if not user.is_authenticated %}
-        <li><a href="{% url 'user' %}">Register</a></li>
-        {% endif %}
     </ul>
 
     <!--Welcome user-->
@@ -20,6 +19,7 @@
         <p>Welcome, {{ user.username }}!</p>
         <a href="{% url 'logout' %}">Logout</a>
         {% else %}
+        <a href="{% url 'user' %}">Register</a>
         <a href="{% url 'login' %}">Login</a>
         {% endif %}
     </div>
