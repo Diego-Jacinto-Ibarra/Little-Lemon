@@ -2,6 +2,10 @@
 
 I developed this project to showcase my backend skills, including Python, Django, MySQL, RESTful API development, and deployment practices, during the Meta Back-End Developer course.
 
+## URL
+
+The public version of this application is available at: [https://diegojacinto.com/littlelemon/](https://diegojacinto.com/littlelemon/)
+
 ## Table of Contents
 
 -   [Installation](#installation)
@@ -37,13 +41,15 @@ I developed this project to showcase my backend skills, including Python, Django
     python manage.py migrate
     ```
 
-5. Create a superuser:
+5. Create a `.env` file in the root directory, you can use the `.env.example` file as a template.
+
+6. Create a superuser:
 
     ```sh
     python manage.py createsuperuser
     ```
 
-6. Run tests to make sure everything is working as expected(optional):
+7. Run tests to make sure everything is working as expected(optional):
     ```sh
     python manage.py test
     ```
